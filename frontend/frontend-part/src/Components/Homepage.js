@@ -19,10 +19,10 @@ const Homepage = () => {
                 </TabList>
               <TabPanels>
                     <TabPanel>
-                        <p> <Signup  /> </p>
+                        <div> <Signup  /> </div>
                     </TabPanel>
                       <TabPanel>
-                          <p> <Login /> </p>
+                          <div> <Login /> </div>
                       </TabPanel>
               </TabPanels>
         </Tabs>
