@@ -1,12 +1,15 @@
 import { Button } from '@chakra-ui/react'
 import React from 'react';
+import GroupChatmodel from './GroupChatmodel';
+
+
 
 const Chatbox = () => {
   return (
     <div>
           <div className = "top-side" style = {{display:'grid',gridTemplateColumns:'1fr 1fr'}}>
             <span> My Chats  </span>
-            <Button> New Group Chat + </Button>
+              <GroupChatmodel />
           </div>
           <div className = "users-display" style = {{paddingTop:'30px'}}>
              <div className = "user-count">
