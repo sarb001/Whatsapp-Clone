@@ -33,7 +33,7 @@ const GroupChatmodel = () => {
                           </Box>     
                         </ModalBody>
                   <ModalFooter>
-                        <Button colorScheme='blue' mr={3} >   Create Chat    </Button>
+                        <Button  mr={3} >   Create Chat    </Button>
                 </ModalFooter>
                 </ModalContent>
             </Modal>

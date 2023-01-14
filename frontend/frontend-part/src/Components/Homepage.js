@@ -12,7 +12,7 @@ const Homepage = () => {
     <div style = {{padding:'6%'}}>  
          <Container maxW = '550px'  color='black'>
           <Box bg = 'lightyellow' w ='100%' p={4} color='red'>
-            <Tabs  variant = 'soft-rounded' colorScheme='green'>
+            <Tabs  variant = 'soft-rounded' colorScheme = 'green'>
                 <TabList>
                     <Tab>  Signup  </Tab>
                     <Tab>  Login   </Tab>

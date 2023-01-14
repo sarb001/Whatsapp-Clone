@@ -2,7 +2,9 @@ import React from 'react'
 
 const Profilebar = () => {
   return (
-    <div>Profilebar</div>
+    <div>  
+      Profilebar
+    </div>
   )
 }
 
