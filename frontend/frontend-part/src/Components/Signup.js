@@ -62,7 +62,7 @@ const Signup = () => {
               isClosable: true,
               position : 'top'
             })
-             navigate('/chats');
+             navigate('/chat');
              
           }catch(error)
           {

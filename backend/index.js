@@ -8,11 +8,9 @@ const ChatRoutes = require('./Routes/ChatRoutes');
 const  dotenv = require('dotenv');
 
 dotenv.config();
-
 connectdb();
 
 app.use(express.json());
-
 
 // User Route 
 app.use('/api/user', UserRoute);
