@@ -6,7 +6,7 @@ import { Box, Container } from '@chakra-ui/react';
 
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react'
 
-
+// iIn original APP
 const Homepage = () => {
   return (
     <div style = {{padding:'6%'}}>  

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import {
     Drawer,
@@ -17,6 +17,9 @@ const NewDrawer = () => {
   
   const { isOpen, onOpen, onClose } = useDisclosure()
 
+  const [search,setsearch] = useState();
+  
+
   return (
     <div>   
         <Button  colorScheme='teal' onClick={onOpen}> Open  </Button>
@@ -28,9 +31,8 @@ const NewDrawer = () => {
         <DrawerContent>
           <DrawerCloseButton />
           <DrawerHeader>  Search for Users here   </DrawerHeader>
-
           <DrawerBody>
-            <Input  placeholder='Type here...' />
+            <Input  placeholder = 'Type here...' />
           </DrawerBody>
         </DrawerContent>
        </Drawer>

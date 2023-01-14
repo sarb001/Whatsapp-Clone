@@ -1,5 +1,4 @@
 import React from 'react'
-import Logout from './Logout'
 import NewDrawer from './NewDrawer'
 import Profilebar from './Profilebar'
 
@@ -9,7 +8,7 @@ const Navbar = () => {
     <span>  <NewDrawer />  </span>   
     <span>  <h1> Talk -a- Tive here  </h1>  </span> 
     <span> <Profilebar />  </span>
-    <span> <Logout />  </span>
+    <span> LOGOUT   </span>
 </div>
   )
 }

@@ -24,6 +24,7 @@ const Signup = () => {
       const handleclick = async(e) => {
         e.preventDefault();
         // Register the Account
+
           if(!name || !email || !password || !confirmpassword)
           {
             toast({
@@ -47,7 +48,6 @@ const Signup = () => {
           }
 
           try{
-
             const config = {
               headers : { 'Content-type' : 'application/json'},
             }
@@ -62,6 +62,7 @@ const Signup = () => {
               isClosable: true,
               position : 'top'
             })
+            localStorage.setItem('userinfo' , JSON.stringify(data)); 
              navigate('/chat');
              
           }catch(error)

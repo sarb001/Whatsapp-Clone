@@ -27,14 +27,22 @@ const UpdateGroupmodel = () => {
                   <ModalCloseButton />
                         <ModalBody>  
                           <Box>
-                             <Input type = "text"  placeholder = 'Chat Name' />
-                             <Button colorScheme = 'blue' mr={3} > Update </Button>
-                             <Input type = "text"  placeholder = 'Add User to Group' />
+                            <div style = {{display:'grid',gridTemplateRows:'1fr 1fr',rowGap:'25px'}}> 
+                                <span> 
+                                <Input type = "text"  placeholder = 'Chat Name' />
+                                <div style = {{padding:'12px'}}>
+                                  <Button colorScheme = 'blue' mr={3} > Update </Button>
+                                </div>
+                                </span>
+                                  <span> 
+                                  <Input type = "text"  placeholder = 'Add User to Group' />
+                                  <ModalFooter>
+                                            <Button colorScheme='red' mr={3} > Leave Group  </Button>
+                                </ModalFooter>
+                                  </span>
+                            </div>
                           </Box>
                         </ModalBody>
-                  <ModalFooter>
-                             <Button colorScheme='red' mr={3} > Leave Group  </Button>
-                </ModalFooter>
                 </ModalContent>
             </Modal>
     </>

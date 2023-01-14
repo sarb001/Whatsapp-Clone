@@ -2,8 +2,6 @@ import { Button } from '@chakra-ui/react'
 import React from 'react';
 import GroupChatmodel from './GroupChatmodel';
 
-
-
 const Chatbox = () => {
   return (
     <div>
