@@ -1,57 +1,35 @@
-import { Button } from '@chakra-ui/react';
-import React from 'react';
-import UpdateGroupmodel from './UpdateGroupmodel';
 
-const Mychats = () => {
+import React, { useEffect } from 'react';
+import { Chatstate } from '../Context/ChatProvider';
+import { getSender } from './getSender';
+
+const Mychats = ({fetchagain , setfetchagain}) => {
+
+  const { user ,  selectedchats , setselectedchats } = Chatstate();
+
 
   return (
-    <div>
-       <div className = "display-name" style = {{display:'grid',
-       gridTemplateColumns:'1fr 150px'}}>
-           <h1>   User Name  </h1>
-            <UpdateGroupmodel />
-       </div>
-        <div className = "chat-area" style = {{backgroundColor:'lightsalmon',height:'70vh',paddingTop:'20px',display:'grid',overflow:'scroll'}}>
-            <span> Here is the Term </span>
-            <span> Here is the Term </span>
-            <span> Here is the Term </span>
-            <span> Here is the Term </span>
-            <span> Here is the Term </span>
-            <span> Here is the Term </span>
-            <span> Here is the Term </span>
-            <span> Here is the Term </span>
-            <span> Here is the Term </span>
-            <span> Here is the Term </span>
-            <span> Here is the Term </span>
-            <span> Here is the Term </span>
-            <span> Here is the Term </span>
-            <span> Here is the Term </span>
-            <span> Here is the Term </span>
-            <span> Here is the Term </span>
-            <span> Here is the Term </span>
-            <span> Here is the Term </span>
-            <span> Here is the Term </span>
-            <span> Here is the Term </span>
-            <span> Here is the Term </span>
-            <span> Here is the Term </span>
-            <span> Here is the Term </span>
-            <span> Here is the Term </span>
-            <span> Here is the Term </span>
-            <span> Here is the Term </span>
-            <span> Here is the Term </span>
-            <span> Here is the Term </span>
-            <span> Here is the Term </span>
-            <span> Here is the Term </span>
-            <span> Here is the Term </span>
-            <span> Here is the Term </span>
-            <span> Here is the Term </span>
-            <span> Here is the Term </span>
-        </div>
-        <div className="send-button" style = {{paddingTop:'20px',display:'grid',gridTemplateColumns:'1fr 70px',columnGap:'30px'}}>
-              <span > <input type = "text" style = {{width:'100%',padding:'5px'}}/> </span>
-              <Button olorScheme='teal' size='sm'> Send </Button>
-        </div>
-    </div>
+    <>
+       { selectedchats ? (
+         <>  
+           {!selectedchats.isGroupChat ? 
+           (<>
+               <h1> one-one chat with  {getSender(user,selectedchats.users)}
+               </h1>
+           </>
+            ):(
+           <>
+           {selectedchats.chatName.toUpperCase()}
+              <h1> Group chat hai hai.....  </h1>
+           </>) 
+           }
+         </>
+         ) : (
+           <>  
+           <h1>  Chat is not Selected   </h1>
+        </>) 
+       } 
+    </>
   )
 }
 

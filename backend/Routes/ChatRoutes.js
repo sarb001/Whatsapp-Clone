@@ -10,7 +10,8 @@ const router = express.Router();
 //  Create One-one Chat 
 router.route('/').post( protectedroute  , createchat)
 
-// Fetch all chats 
+// Fetch all chats  (  Can be  GroupChat || or 1-1 Chat  )
+
 router.route('/').get( protectedroute  , fetchallchats)
 
 // Create Group Chat 
