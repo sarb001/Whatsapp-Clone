@@ -16,10 +16,10 @@ const Navbar = () => {
   }
 
   return (
-    <div style = {{display:'grid' ,gridTemplateColumns:'1fr 1fr 1fr 1fr',padding:'1%',backgroundColor:'lightsalmon'}}> 
+    <div style = {{display:'grid' ,gridTemplateColumns:'1fr 1fr 1fr 150px',padding:'1%',backgroundColor:'lightsalmon'}}> 
     <span> { user &&  <NewDrawer /> }   </span>   
     <span>  <h1> Talk -a- Tive here  </h1>  </span> 
-    <span> <Profilebar />  </span>
+    <span> <Profilebar  user = {user} />  </span>
     <Button onClick = {handlelogout}> Logout  </Button>
 </div>
   )

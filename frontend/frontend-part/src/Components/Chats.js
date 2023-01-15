@@ -15,8 +15,8 @@ const Chats = () => {
        <span>  {user && <Navbar />  } </span> 
            <span className = 'container-chat' style = {{padding:'2%',display:'grid',
            gridTemplateColumns:'400px 1fr',columnGap:'80px' ,height:'90vh'}}>  
-           <div style = {{backgroundColor:'lightslategray',padding:'2%'}}>    { user && <Chatbox  fetchagain = {fetchagain} />  }   </div>  
-           <div style = {{backgroundColor:'lightslategray',padding:'2%'}}>    { user && <Mychats  fetchagain = {fetchagain}  setfetchagain = {setfetchagain}  /> }   </div>  
+           <div style = {{backgroundColor:'lightcoral',padding:'2%'}}>    { user && <Chatbox  fetchagain = {fetchagain} />  }   </div>  
+           <div style = {{backgroundColor:'lightcoral',padding:'2%'}}>    { user && <Mychats  fetchagain = {fetchagain}  setfetchagain = {setfetchagain}  /> }   </div>  
            </span>   
        </div>
     </div>
