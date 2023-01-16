@@ -4,6 +4,7 @@ import React, { useEffect } from 'react';
 import { Chatstate } from '../Context/ChatProvider';
 import { getSender, getSenderFull } from './getSender';
 import Profilemodal from './Profilemodal';
+import UpdateGroupmodel from './UpdateGroupmodel';
 
 
 const Mychats = ({fetchagain , setfetchagain}) => {
@@ -16,11 +17,12 @@ const Mychats = ({fetchagain , setfetchagain}) => {
       
        { selectedchats ? (
          <>  
+          {/*  If Selected chat is not Groupchat then */}
            {!selectedchats.isGroupChat ? 
            (<>
                  {/* Only Fetching User Name  */}
                  <div style = {{display:'grid',gridTemplateColumns:'1fr 200px'}}>
-                    <span> <h1>  {getSender(user,selectedchats.users)} </h1> </span>
+                    <span>   {getSender(user,selectedchats.users)} </span>
                     <span> <Button>  <Profilemodal user = {getSenderFull(user,selectedchats.users)}  />  </Button>  
                     </span>
                  </div>
@@ -30,8 +32,10 @@ const Mychats = ({fetchagain , setfetchagain}) => {
                </Box>
            </>
             ):(
+              // If it is Groupchat then 
            <>
-           {selectedchats.chatName.toUpperCase()}
+                  {selectedchats.chatName.toUpperCase()}
+                  <UpdateGroupmodel   />
            </>) 
            }
          </>

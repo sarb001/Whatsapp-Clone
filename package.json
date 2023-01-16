@@ -23,6 +23,7 @@
     "jsonwebtoken": "^9.0.0",
     "mongoose": "^6.8.3",
     "nodemon": "^2.0.20",
+    "react-icons": "^4.7.1",
     "react-router-dom": "^6.6.2"
   }
 }

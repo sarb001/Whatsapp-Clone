@@ -14,4 +14,7 @@ function App() {
   );
 }
 
+// userBadgeitem =>  For showing  name only 
+// userListitem =>   for showing other details like email ,pic others
+
 export default App;

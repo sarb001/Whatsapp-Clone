@@ -1,18 +1,17 @@
-import { Box, Stack, Text, useToast, VStack } from '@chakra-ui/react';
+import { Box, Button, Stack, Text, useToast, VStack } from '@chakra-ui/react';
 import React  , { useEffect, useState } from 'react';
 import { Chatstate } from '../Context/ChatProvider';
 import { getSender } from './getSender';
-import GroupChatmodel from './GroupChatmodel';
 import axios from 'axios';
+import CreateGroupchatmodel from './CreateGroupchatmodel';
 
 
 const Chatbox = ({fetchagain}) => {
 
- const {user ,setuser , selectedchats , 
+ const {user ,setuser , selectedchats ,
   setselectedchats , chats , setchats}  =  Chatstate();
   const [loggeduser,setloggeduser] = useState();
   const toast = useToast();
-
 
   //Fetch all Chats from Group 
   const fetchchats = async () => {
@@ -48,8 +47,8 @@ const Chatbox = ({fetchagain}) => {
   return (
     <div>
           <div className = "top-side" style = {{display:'grid',gridTemplateColumns:'1fr 1fr'}}>
-            <span> My Chats  </span>
-              <GroupChatmodel />
+            <span> My Chats   </span>
+            <span>  <CreateGroupchatmodel  />  </span>   
           </div>
           <div className = "users-display" style = {{paddingTop:'30px'}}>
              <div className = "user-count">
@@ -70,7 +69,6 @@ const Chatbox = ({fetchagain}) => {
                     ))}
                 </Stack>
               ) : (<h1>  No User Present  </h1>)}
-                 
               </span>
           </div>
              </div>
