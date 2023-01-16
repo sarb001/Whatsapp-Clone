@@ -106,7 +106,6 @@ const CreateGroupchatmodel = () => {
           })
           return;
          }
-
             try
             {  
                 const config = {
@@ -119,7 +118,8 @@ const CreateGroupchatmodel = () => {
                   {
                       name: groupchatname,
                       users:JSON.stringify(selectedusers.map((u) => u._id))
-                  },config)
+                  },
+                  config);
 
                   setchats([data,...chats]);
                   onClose()
@@ -142,8 +142,6 @@ const CreateGroupchatmodel = () => {
                 })
             }
   } 
-
-
 
   return (
     <div>
@@ -172,18 +170,17 @@ const CreateGroupchatmodel = () => {
                                         handlefunction = {() => handleDelete(u)} />
                                       ))}
                                   </Box>
-                            {/* /*  Render on Screen  */}
+            {/* /*  Render on Screen  */}
                               {loading ? (<> Loading ...... </>) :
                               ( searchResult?.slice(0,4).map((user) => (
                                   <UserListItem                // show all details 
-                                  key = {user._id} 
+                                    key = {user._id} 
                                     user = {user} 
                                     handlefunction = {() => clicktoaddgrp(user)}   />
                               )))
                               }   
-
          </ModalBody>
-        <ModalFooter>  <Button  mr={3}  onClick = {handlesubmit}>   Create Chat    </Button>
+        <ModalFooter>  <Button  mr = {3}  onClick = {handlesubmit}>   Create Chat    </Button>
                    </ModalFooter>
         </ModalContent>
       </Modal>

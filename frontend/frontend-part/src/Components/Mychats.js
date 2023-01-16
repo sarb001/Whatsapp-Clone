@@ -23,8 +23,10 @@ const Mychats = ({fetchagain , setfetchagain}) => {
                  {/* Only Fetching User Name  */}
                  <div style = {{display:'grid',gridTemplateColumns:'1fr 200px'}}>
                     <span>   {getSender(user,selectedchats.users)} </span>
-                    <span> <Button>  <Profilemodal user = {getSenderFull(user,selectedchats.users)}  />  </Button>  
-                    </span>
+                 <span> <Button>  
+                           <Profilemodal user = {getSenderFull(user,selectedchats.users)}  />
+                         </Button>  
+                      </span>
                  </div>
                {/* For Showing Message Box  */}
                <Box>

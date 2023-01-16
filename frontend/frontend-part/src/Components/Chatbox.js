@@ -55,16 +55,19 @@ const Chatbox = ({fetchagain}) => {
               <span style = {{fontSize:"25px",backgroundColor:'lightblue',width:'100%'}}>  
               
               {chats  ? (
-                <Stack overflowY ="scroll">
+                <Stack overflowY = "scroll">
                     {chats.map((chat) => (
                       <Box onClick={() => setselectedchats(chat)}
                       cursor = "pointer" 
-                      bg = {selectedchats == chat ? "#38B2AC" : "#E8E8E8"}
-                      color = {selectedchats == chat ? "white" : "black"} 
+                      bg =    {selectedchats === chat ? "#38B2AC" : "#E8E8E8"}
+                      color = {selectedchats === chat ? "white" : "black"} 
                       px = {3} 
                       py = {2} 
                       key = {chat._id} >
-                        <Text > {!chat.isGroupchat ? getSender(loggeduser , chat.users) :chat.chatName } </Text>
+                            <Text> 
+                                {!chat.isGroupchat ? getSender(loggeduser , chat.users) 
+                                :  chat.chatName }
+                           </Text>
                       </Box>
                     ))}
                 </Stack>
