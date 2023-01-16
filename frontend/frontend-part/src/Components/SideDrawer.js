@@ -1,4 +1,4 @@
-import { Avatar, Box, Button, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerHeader, DrawerOverlay, Input, Text, useDisclosure } from '@chakra-ui/react'
+import { Avatar, Box, Button, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerHeader, DrawerOverlay, Input, Text, Toast, useDisclosure, useToast } from '@chakra-ui/react'
 import React, { useState } from 'react';
 import {FcSearch} from 'react-icons/fc';
 import {
@@ -16,21 +16,97 @@ import { AiOutlineArrowDown ,AiFillBell  } from 'react-icons/ai';
 import { Chatstate } from '../Context/ChatProvider';
 import ProfileModals from './ProfileModals';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import UserListItem from './UserListItem';
 
 const SideDrawer = () => {
 
-const { user } = Chatstate();
-const [search ,setSearch] = useState();
+const { user ,selectedchats , setselectedchats } = Chatstate();
+const [search ,setSearch] = useState("");
+const [searchResult , setSearchResult] = useState([]);
+const [loading ,setLoading] = useState(false);
+const [loadingchat ,setLoadingchat] = useState(false);
 const navigate = useNavigate();
+const toast = useToast();
 
-const handleSearch = () => {
+const handleSearch = async () => {
+    if(!search)
+    {
+        toast({
+          title : 'Please Enter something in Search',
+          status : 'warning',
+          duration: 5000,
+          isClosable: true,
+          position: "top-left",
+        });
+        return;
+    }
 
+    try
+    {
+          setLoading(true);
+          const config = {
+            headers: {
+              Authorization: `Bearer ${user.token}`,
+            },
+          };
+    
+          const { data } = await axios.get(`/api/user?search=${search}`, config);
+    
+          setLoading(false);
+          setSearchResult(data);
+    }catch(error)
+    {
+      toast({
+        title: "Error Occured!",
+        description: "Failed to Load the Search Results",
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+        position: "bottom-left",
+      });
+    }
 }
 
 const logouthandler = () => {
   localStorage.removeItem('userinfo');
   navigate('/');
 }
+
+// Accessing all chats 
+// So can do anything with this
+const accesschat = async (userid) => {
+
+  try{
+
+    setLoadingchat(true);
+    const config = {
+      headers : {
+         "Content-type"  : "application/json",
+          Authorization : `Bearer ${user.token}`,
+      },
+    }
+
+    const { data } = await axios.post(`/api/chat` , {userid} , config);
+
+     setselectedchats(data);
+     setLoadingchat(false);
+     onClose();
+
+  }catch(error)
+  {
+    toast({
+      title: "Error fetching the chat",
+      description: error.message,
+      status: "error",
+      duration: 5000,
+      isClosable: true,
+      position: "bottom-left",
+    });
+  }
+
+}  
+
 
 const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -84,7 +160,15 @@ const { isOpen, onOpen, onClose } = useDisclosure();
                 />
                 <Button onClick = {handleSearch}> Go </Button>
               </Box>
-                  In the DrWER bODY  
+                 { loading ? (<> Loading .... </>) :
+                 (
+                      searchResult?.map((user) => (
+                          <UserListItem  
+                          key = {user._id} 
+                          user = {user}  
+                          handlefunction = {() => accesschat(user._id)} />
+                      ))
+                 ) }
             </DrawerBody>
           </DrawerContent>
         </Drawer>
