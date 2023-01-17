@@ -2,6 +2,7 @@ import { Box, Button, Stack, Text, useToast } from '@chakra-ui/react';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { Chatstate } from '../Context/ChatProvider'
+import CreateGroupchatmodel from './CreateGroupchatmodel';
 import { getSender } from './getSender';
 
 const Mychats = () => {
@@ -52,16 +53,11 @@ const [loadingchat ,setLoadingchat] = useState(false);
          bg = "white" 
          borderRadius="lg">
 
-          <Box   pb={3}
-                px={3}
-                fontSize={{ base: "28px", md: "30px" }}
-                fontFamily="Work sans"
-                d="flex"
-                w="100%"
-                justifyContent="space-between"
-                alignItems="center">
-                  My chats 
-                  <Button> New Group Chat ++ </Button>
+          <Box display ="flex" >
+                   <span> My chats  </span> 
+                   <CreateGroupchatmodel>
+                       {/* <Button> New Group Chat ++ </Button> */}
+                    </CreateGroupchatmodel>  
           </Box>  
             <Box 
                d="flex"
@@ -73,7 +69,7 @@ const [loadingchat ,setLoadingchat] = useState(false);
                borderRadius="lg"
                overflowY = "hidden">
                    {chats ? (
-                   <Stack overflowY = "scroll">
+                   <Stack overflowY = "scroll" height="50vh">
                        {chats.map((chat) => (
                         <Box  onClick = {() => setselectedchats(chat)} 
                         cursor = "pointer"

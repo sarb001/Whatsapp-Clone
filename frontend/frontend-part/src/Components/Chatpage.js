@@ -6,14 +6,15 @@ import SideDrawer from './SideDrawer';
 
 const Chatpage = () => {
     const { user} = Chatstate();
-    const [fetchagain,setfetchagain] = useState(false);
+    const [fetchagain,setfetchagain] = useState(false); 
+    // used bcoz when there is need to update  in chats 
 
   return (
     <div>
          {user && <SideDrawer />}
          <div style = {{display:'grid' ,gridTemplateColumns:'550px 1fr'}}>
                 <span> {user && <Mychats   />} </span>
-                <span style = {{backgroundColor:'lightblue' , height:'60vh'}}> {user && <Chatbox  fetchagain = {fetchagain}   />}  </span>
+                <span> {user && <Chatbox  fetchagain = {fetchagain}  setfetchagain = {setfetchagain}  />}  </span>
          </div>
     </div>
   )
