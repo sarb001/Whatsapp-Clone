@@ -1,4 +1,7 @@
-import { Avatar, Box, Button, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerHeader, DrawerOverlay, Input, Text, Toast, useDisclosure, useToast } from '@chakra-ui/react'
+import { Avatar, Box, Button, Drawer, DrawerBody,
+   DrawerCloseButton, DrawerContent, DrawerHeader,
+    DrawerOverlay, Input, Text, Toast, 
+    useDisclosure, useToast } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import {FcSearch} from 'react-icons/fc';
 import {
@@ -21,7 +24,7 @@ import UserListItem from './UserListItem';
 
 const SideDrawer = () => {
 
-const { user ,selectedchats , setselectedchats } = Chatstate();
+const { user ,selectedchats , setselectedchats  ,chats ,setchats } = Chatstate();
 const [search ,setSearch] = useState("");
 const [searchResult , setSearchResult] = useState([]);
 const [loading ,setLoading] = useState(false);
@@ -33,7 +36,7 @@ const handleSearch = async () => {
     if(!search)
     {
         toast({
-          title : 'Please Enter something in Search',
+          title : 'Please Enter something in Search....',
           status : 'warning',
           duration: 5000,
           isClosable: true,
@@ -58,7 +61,7 @@ const handleSearch = async () => {
     }catch(error)
     {
       toast({
-        title: "Error Occured!",
+        title: "Error Occured!dddddd......",
         description: "Failed to Load the Search Results",
         status: "error",
         duration: 5000,
@@ -89,6 +92,8 @@ const accesschat = async (userid) => {
 
     const { data } = await axios.post(`/api/chat` , {userid} , config);
 
+      if(!chats.find((c) => c._id === data._id)) setchats([data,...chats]);
+
      setselectedchats(data);
      setLoadingchat(false);
      onClose();
@@ -96,7 +101,7 @@ const accesschat = async (userid) => {
   }catch(error)
   {
     toast({
-      title: "Error fetching the chat",
+      title: "Error fetchhhhhh ....  chat",
       description: error.message,
       status: "error",
       duration: 5000,
@@ -107,43 +112,42 @@ const accesschat = async (userid) => {
 
 }  
 
-
 const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
     <>
-        <Box>
-      <div style = {{display:'grid',gridTemplateColumns:'200px 1fr 100px 100px',columnGap:'40px',padding:'1%'}}>
+              <Box>
+            <div style = {{display:'grid',gridTemplateColumns:'200px 1fr 100px 100px',columnGap:'40px',padding:'1%'}}>
 
-          <Button variant="ghost" onClick = {onOpen}>
-                  <Text px  = "4"> Search User </Text>
-                  <FcSearch />
-          </Button>
+                <Button variant="ghost" onClick = {onOpen}>
+                        <Text px  = "4"> Search User </Text>
+                        <FcSearch />
+                </Button>
 
-          <Text fontSize='2xl'>  Talk-a-tive   </Text>
-          <span>  <AiFillBell  size = "30px" /> </span>
-          <div>
+                <Text fontSize='2xl'>  Talk-a-tive   </Text>
+                <span>  <AiFillBell  size = "30px" /> </span>
+                <div>
 
-              {/* Dropdown Menu  */}
-                    <Menu>
-                        <MenuButton  as = {Button} rightIcon = {<AiOutlineArrowDown />}   >
-                          <Avatar  
-                          size = "sm" 
-                          cursor="pointer" 
-                          name = {user.name} 
-                          src = {user.pic} />
-                        </MenuButton>
-                        <MenuList>
-                          <ProfileModals  user = {user}>
-                              <MenuItem>   My Profile  </MenuItem> {"  "} 
-                          </ProfileModals>
-                          <MenuDivider />
-                          <MenuItem onClick = {logouthandler}> Logout  </MenuItem>
-                        </MenuList>
-                    </Menu>
-          </div>
-      </div>
-        </Box>
+                    {/* Dropdown Menu  */}
+                          <Menu>
+                              <MenuButton  as = {Button} rightIcon = {<AiOutlineArrowDown />}   >
+                                <Avatar  
+                                size = "sm" 
+                                cursor="pointer" 
+                                name = {user.name} 
+                                src = {user.pic} />
+                              </MenuButton>
+                              <MenuList>
+                                <ProfileModals  user = {user}>
+                                    <MenuItem>   My Profile  </MenuItem> {"  "} 
+                                </ProfileModals>
+                                <MenuDivider />
+                                <MenuItem onClick = {logouthandler}> Logout  </MenuItem>
+                              </MenuList>
+                          </Menu>
+                </div>
+            </div>
+              </Box>
 
         {/*  id is Referred to button search above  */}
         <Drawer placement = "left" onClose={onClose} isOpen={isOpen}>   
@@ -152,7 +156,7 @@ const { isOpen, onOpen, onClose } = useDisclosure();
             <DrawerHeader borderBottomWidth="1px">  Search Users  </DrawerHeader>
           <DrawerCloseButton />
             <DrawerBody>
-              <Box d="flex" pb={2}>
+              <Box d = "flex" pb={2}>
                 <Input
                   placeholder = "Search by name or email"
                   mr={2}
@@ -164,7 +168,7 @@ const { isOpen, onOpen, onClose } = useDisclosure();
                  (
                       searchResult?.map((user) => (
                           <UserListItem  
-                          key = {user._id} 
+                          key =  {user._id} 
                           user = {user}  
                           handlefunction = {() => accesschat(user._id)} />
                       ))

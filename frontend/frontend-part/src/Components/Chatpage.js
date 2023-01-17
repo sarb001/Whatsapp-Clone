@@ -12,7 +12,7 @@ const Chatpage = () => {
     <div>
          {user && <SideDrawer />}
          <div style = {{display:'grid' ,gridTemplateColumns:'550px 1fr'}}>
-                <span> {user && <Mychats fetchagain = {fetchagain }   />} </span>
+                <span> {user && <Mychats   />} </span>
                 <span style = {{backgroundColor:'lightblue' , height:'60vh'}}> {user && <Chatbox  fetchagain = {fetchagain}   />}  </span>
          </div>
     </div>
