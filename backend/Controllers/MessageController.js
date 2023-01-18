@@ -7,9 +7,7 @@ const jsoncreatetoken = require('./JsoncreateToken');
 
 // Able to Send Message
 const sendmessage = async(req,res) => {
-
     const {  content , chatid } = req.body;
-
     if(!content || !chatid)                    // id to coonect with new is notGiven 
     {
         res.status(400);
