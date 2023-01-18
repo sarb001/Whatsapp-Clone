@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { Chatstate } from '../Context/ChatProvider';
 import { getSenderFull } from './getSender';
 import ProfileModals from './ProfileModals';
+import ScrollableChat from './ScrollableChat';
 import UpdateGroupmodel from './UpdateGroupmodel';
 
 const Singlechat = ({fetchagain , setfetchagain}) => 
@@ -112,7 +113,8 @@ const Singlechat = ({fetchagain , setfetchagain}) =>
                         <h1>  {selectedchats.chatName.toUpperCase()}  </h1>
                       <span>  <UpdateGroupmodel 
                                fetchagain = {fetchagain } 
-                               setfetchagain = {setfetchagain}  />
+                               setfetchagain = {setfetchagain} 
+                               fetchmessage = {fetchmessage} />
                     </span>  
                   </div>)}
             </Box>
@@ -129,7 +131,9 @@ const Singlechat = ({fetchagain , setfetchagain}) =>
                             margin = "auto" />
                       </>) : 
                      (<>
-                       in the box 
+                          <div className="messages">            
+                             <ScrollableChat  messages = {messages} /> 
+                          </div>
                      </>)}
                      <FormControl onKeyDown = {sendMessage}  isRequired>
                       <Input type = "text" placeholder = 'Type your messages....' 

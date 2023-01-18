@@ -22,7 +22,7 @@ import axios from 'axios';
 import UserBadgeitem from './UserBadgeitem';
 import UserListItem from './UserListItem';
 
-const UpdateGroupmodel = ({fetchagain ,setfetchagain}) => {
+const UpdateGroupmodel = ({fetchagain ,setfetchagain , fetchmessage}) => {
 
      const {user ,selectedchats , setselectedchats} = Chatstate();
      const { isOpen, onOpen, onClose } = useDisclosure();
@@ -166,10 +166,12 @@ const UpdateGroupmodel = ({fetchagain ,setfetchagain}) => {
               config
             );
       
+            // update the chats if not Present then show nothing 
             user1._id === user._id ? setselectedchats() : setselectedchats(data);  
-             // update the chats if not Present then show nothing 
+            fetchmessage();         // fetch when user Left  the Group
             setfetchagain(!fetchagain);
             setloading(false);
+
 
           }catch(error)
           {
