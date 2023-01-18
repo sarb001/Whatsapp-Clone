@@ -13,7 +13,7 @@ const Chatpage = () => {
     <div>
          {user && <SideDrawer />}
          <div style = {{display:'grid' ,gridTemplateColumns:'550px 1fr'}}>
-                <span> {user && <Mychats   />} </span>
+                <span> {user && <Mychats  fetchagain = {fetchagain} />} </span>
                 <span> {user && <Chatbox  fetchagain = {fetchagain}  setfetchagain = {setfetchagain}  />}  </span>
          </div>
     </div>

@@ -82,8 +82,8 @@ const Login = () => {
                 <Button bg = 'black' onClick = {handlelogin}>  LOGIN   </Button> 
                 <Button bg = 'black' onClick = { 
                   () => {
-                    setemail("testuser@gmail.com");
-                    setpassword("testuser")
+                    setemail("testinguser@gmail.com");
+                    setpassword("testinguser")
                   }}>  
                 Get user Credentials   </Button> 
             </span>

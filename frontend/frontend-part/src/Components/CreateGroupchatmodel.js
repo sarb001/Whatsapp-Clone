@@ -169,6 +169,7 @@ const CreateGroupchatmodel = () => {
                                         handlefunction = {() => handleDelete(u)} />
                                       ))}
                                   </Box>
+                                  
             {/* /*  Render on Screen  */}
                               {loading ? (<> Loading ...... </>) :
                               ( searchResult?.slice(0,4).map((user) => (

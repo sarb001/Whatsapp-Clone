@@ -5,7 +5,7 @@ import { Chatstate } from '../Context/ChatProvider'
 import CreateGroupchatmodel from './CreateGroupchatmodel';
 import { getSender } from './getSender';
 
-const Mychats = () => {
+const Mychats = ({fetchagain}) => {
 
 const { user,setuser , selectedchats , setselectedchats , chats , setchats } = Chatstate();
 const [loggeduser ,setloggeduser] = useState();
