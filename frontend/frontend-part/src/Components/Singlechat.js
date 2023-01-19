@@ -6,6 +6,10 @@ import { getSenderFull } from './getSender';
 import ProfileModals from './ProfileModals';
 import ScrollableChat from './ScrollableChat';
 import UpdateGroupmodel from './UpdateGroupmodel';
+import io from 'socket.io-client'
+
+var socket , selectedchatcompare;
+const ENDPOINT = 'http://localhost:5000'
 
 const Singlechat = ({fetchagain , setfetchagain}) => 
 {
@@ -14,8 +18,18 @@ const Singlechat = ({fetchagain , setfetchagain}) =>
 
     const [messages ,setMessages] = useState([]);
     const [newMessage ,setnewMessage] = useState();       // value = {newMessage} first // Second value  
+     const [socketconnected,setsocketconencted]= useState(false);
+
 
      const toast = useToast();
+
+    // For Socket Setup 
+     useEffect(() => {
+      socket = io(ENDPOINT); 
+      socket.emit('setup' , user);                                    // emit the Connection   
+      socket.on('connection', () => setsocketconencted(true));       
+     },[])
+
 
       // Send Message on Pressing Enter 
      const sendMessage = async (event) => {
@@ -35,7 +49,8 @@ const Singlechat = ({fetchagain , setfetchagain}) =>
                   content : newMessage,
               },config);
 
-              console.log('data is ',data);
+              // console.log('data is ',data);
+              socket.emit('new message' ,data);       // emit or show ( {data} -- message )
               setMessages([...messages,data]);
 
             }catch(error)
@@ -71,6 +86,8 @@ const Singlechat = ({fetchagain , setfetchagain}) =>
            console.log('fetch msg',data);
           setMessages(data);
           setloading(false);
+          socket.emit('join chat new person',selectedchats._id);
+
           }
           catch(error)
           {
@@ -92,7 +109,27 @@ const Singlechat = ({fetchagain , setfetchagain}) =>
 
      useEffect(() => {
         fetchmessage();        // fetch all messages at Once 
+        selectedchatcompare = selectedchats;
      },[selectedchats])       // Also fetch when diff chat is  Selected 
+
+     
+    // Recieving Message 
+     useEffect(() => {
+       socket.on('message recieved' , (newMessageRecieved) => {
+        // if no chat is selected  || 
+        // the chat we select  !== not equal to the msg recieved id or Person
+        // (( arsh and jass are talking but are interacting but recieve msg but for third user get the msg 
+          //  we give notificaton  ))
+          if(!selectedchatcompare || selectedchatcompare._id !== newMessageRecieved.chat._id)
+          {
+              // give notification for that 
+          }else{
+            // else add messages and recieved on other side 
+            setMessages([...messages ,newMessageRecieved]);
+          }
+       })
+     })
+
 
   return (
     <div> 
