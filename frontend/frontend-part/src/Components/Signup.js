@@ -62,6 +62,7 @@ const Signup = () => {
               isClosable: true,
               position : 'top'
             })
+            // local storage isused 
             localStorage.setItem('userinfo' , JSON.stringify(data)); 
              navigate('/chat');
              
