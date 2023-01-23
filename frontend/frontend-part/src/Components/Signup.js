@@ -56,7 +56,7 @@ const Signup = () => {
             {name ,email ,password  }, config );
 
             toast({
-              title: ' User is Registered Succesfully here Done',
+              title: ' User is Registered Succesfully ',
               status: 'success',
               duration: 9000,
               isClosable: true,
