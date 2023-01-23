@@ -181,7 +181,8 @@ const Singlechat = ({fetchagain , setfetchagain}) =>
 
        </>) : 
        (
-            <Box  display = "flex" alignItems="center" justifyContent="center" h = "100%" >
+            <Box style = {{height:'80vh',backgroundColor:'white',alignItems:'center',
+            justifyContent:'center',display:'flex',padding:'1%'}}>
                 <Text fontSize="3xl">  Click on a user to start chatting  </Text>
             </Box>
        )}

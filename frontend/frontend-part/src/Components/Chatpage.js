@@ -12,7 +12,8 @@ const Chatpage = () => {
   return (
     <div>
          {user && <SideDrawer />}
-         <div style = {{display:'grid' ,gridTemplateColumns:'550px 1fr'}}>
+         <div style = {{display:'grid' ,gridTemplateColumns:'400px 1fr',paddingTop:'2%',
+         backgroundColor:'lightblue',padding:'2%',columnGap:'20px'}}>
                 <span> {user && <Mychats  fetchagain = {fetchagain} />} </span>
                 <span> {user && <Chatbox  fetchagain = {fetchagain}  setfetchagain = {setfetchagain}  />}  </span>
          </div>

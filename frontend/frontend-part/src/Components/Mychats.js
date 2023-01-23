@@ -2,6 +2,7 @@ import { Box, Button, Stack, Text, useToast } from '@chakra-ui/react';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { Chatstate } from '../Context/ChatProvider'
+import ChatLoading from './ChatLoading';
 import CreateGroupchatmodel from './CreateGroupchatmodel';
 import { getSender } from './getSender';
 
@@ -53,24 +54,15 @@ const [loadingchat ,setLoadingchat] = useState(false);
          bg = "white" 
          borderRadius="lg">
 
-          <Box display ="flex" >
-                   <span> My chats  </span> 
-                   <CreateGroupchatmodel>
-                       {/* <Button> New Group Chat ++ </Button> */}
-                    </CreateGroupchatmodel>  
+          <Box style = {{display:'grid',gridTemplateColumns:'1fr 1fr',paddingBottom:'4%'}}>
+                   <span style = {{fontSize:"23px"}}> My chats  </span> 
+                   <span> <CreateGroupchatmodel />   </span>
           </Box>  
-            <Box 
-               d="flex"
-               flexDir="column"
-               p={3}
-               bg="#F8F8F8"
-               w="100%"
-               h="100%"
-               borderRadius="lg"
-               overflowY = "hidden">
+            <Box  overflowY = "hidden">
                    {chats ? (
-                   <Stack overflowY = "scroll" height="50vh">
-                       {chats.map((chat) => (
+                   <Stack overflowY = "scroll" height="70vh">
+                       {
+                        chats.map((chat) => (
                         <Box  onClick = {() => setselectedchats(chat)} 
                         cursor = "pointer"
                         backgroundColor= {selectedchats === chat ? "#38B2AC" : "#E8E8E8"}
@@ -85,15 +77,19 @@ const [loadingchat ,setLoadingchat] = useState(false);
                                 if grp chat then grp chst name is shown    */}
                               {!chat.isGroupChat ? getSender(loggeduser,chat.users) : chat.chatName}
                           </Text>
-                        </Box>
-                       ))}   
+                        </Box> ))
+                       }   
                    </Stack>
                    ) : (<>
+                   <Box style = {{height:'60vh',backgroundColor:'white'}}>
                     <h1> Chats not Present or Showing  </h1>
-                   </>)}
+                   </Box>
+                     </>
+                   )}
             </Box>
           </Box>
-    </div> )
+    </div> 
+  )
    }
 
 export default Mychats

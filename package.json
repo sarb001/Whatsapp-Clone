@@ -24,6 +24,7 @@
     "mongoose": "^6.8.3",
     "nodemon": "^2.0.20",
     "react-icons": "^4.7.1",
+    "react-loading-skeleton": "^3.1.0",
     "react-router-dom": "^6.6.2",
     "socket.io": "^4.5.4"
   }

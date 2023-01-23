@@ -14,6 +14,7 @@ import {
   MenuOptionGroup,
   MenuDivider,
 } from '@chakra-ui/react';
+
 import { BellIcon } from '@chakra-ui/icons';
 import { AiOutlineArrowDown ,AiFillBell  } from 'react-icons/ai';
 import { Chatstate } from '../Context/ChatProvider';
@@ -21,7 +22,7 @@ import ProfileModals from './ProfileModals';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import UserListItem from './UserListItem';
-
+import ChatLoading from './ChatLoading';
 const SideDrawer = () => {
 
 const { user ,selectedchats , setselectedchats  ,chats ,setchats } = Chatstate();
@@ -117,17 +118,21 @@ const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <>
               <Box>
-            <div style = {{display:'grid',gridTemplateColumns:'200px 1fr 100px 100px',columnGap:'40px',padding:'1%'}}>
+            <div style = {{display:'grid',gridTemplateColumns:'1fr 1fr 1fr',padding:'8px',}}>
 
-                <Button variant="ghost" onClick = {onOpen}>
-                        <Text px  = "4"> Search User </Text>
-                        <FcSearch />
-                </Button>
+                <span>
+                    <Button variant="ghost" onClick = {onOpen} >
+                            <Text px  = "4"> Search User </Text>
+                            <FcSearch />
+                    </Button>
+                </span>
 
-                <Text fontSize='2xl'>  Talk-a-tive   </Text>
-                <span>  <AiFillBell  size = "30px" /> </span>
-                <div>
+                <span style = {{textAlign:'center'}}>
+                  <Text fontSize='2xl'>  Chatties  </Text>
+                </span>
+                {/* <span>  <AiFillBell  size = "30px" /> </span> */}
 
+                <div style = {{textAlign:'center'}}>
                     {/* Dropdown Menu  */}
                           <Menu>
                               <MenuButton  as = {Button} rightIcon = {<AiOutlineArrowDown />}   >
@@ -153,26 +158,37 @@ const { isOpen, onOpen, onClose } = useDisclosure();
         <Drawer placement = "left" onClose={onClose} isOpen={isOpen}>   
           <DrawerOverlay />
           <DrawerContent>
+            <span style  = {{backgroundColor:'#008069',color:'white'}}>
             <DrawerHeader borderBottomWidth="1px">  Search Users  </DrawerHeader>
-          <DrawerCloseButton />
+            <DrawerCloseButton />
+            </span>
             <DrawerBody>
-              <Box d = "flex" pb={2}>
+              <Box style = {{display:'grid',gridTemplateColumns:'1fr 50px',columnGap:'15px'}}>
                 <Input
                   placeholder = "Search by name or email"
                   mr={2}
                   onChange={(e) => setSearch(e.target.value)}
                 />
-                <Button onClick = {handleSearch}> Go </Button>
+                <Button onClick = {handleSearch} style = {{backgroundColor:'#008069',color:'white'}}> Go </Button>
               </Box>
-                 { loading ? (<> Loading .... </>) :
+              <span style = {{paddingTop:'5%'}}>
+
+                 { loading ? 
+                 (<> 
+                 <Box>
+                  <ChatLoading />
+                 </Box>
+
+                 </>) :
                  (
-                      searchResult?.map((user) => (
-                          <UserListItem  
-                          key =  {user._id} 
-                          user = {user}  
-                          handlefunction = {() => accesschat(user._id)} />
-                      ))
-                 ) }
+                   searchResult?.map((user) => (
+                     <UserListItem  
+                     key =  {user._id} 
+                     user = {user}  
+                     handlefunction = {() => accesschat(user._id)} />
+                     ))
+                     ) }
+              </span>
             </DrawerBody>
           </DrawerContent>
         </Drawer>
