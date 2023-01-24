@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 
 const ChatContext = createContext();
 
-
 const ChatProvider = ({children}) => {
     const [user,setuser] = useState();
     const [selectedchats,setselectedchats] = useState();     // for selecting chat 

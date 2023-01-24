@@ -18,7 +18,7 @@ import { Chatstate } from '../Context/ChatProvider';
 
 const ProfileModals = ({user,children}) => {
 
-
+  console.log('modal user is --',user);
    const { isOpen, onOpen, onClose } = useDisclosure()
   return (
     <>
@@ -37,7 +37,7 @@ const ProfileModals = ({user,children}) => {
                       <ModalHeader
                       fontSize="20px" 
                       justifyContent="center" >
-                       Profile Name here iss {user.name}
+                       Profile Name - {user.name}
                          {console.log('name is',user.name)}
                          {console.log('name email',user.email)}
                       </ModalHeader>
@@ -46,10 +46,10 @@ const ProfileModals = ({user,children}) => {
                 <Image 
                       borderRadius="full" 
                       src = {user.pic} 
-                      maxWidth="20px" />
+                      maxWidth="70px" />
                       {user.pic}
                 <Text  fontSize={{base : '28px'}}>
-                        Profile Email is here  : {user.email} 
+                        Profile Email- : {user.email} 
                 </Text> 
               </ModalBody>
             </ModalContent>

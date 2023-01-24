@@ -136,13 +136,13 @@ const Singlechat = ({fetchagain , setfetchagain}) =>
          {/* If chat is  selected then  */}
        {selectedchats ? (
        <> 
-            <Box style = {{padding:'2%'}}>
+            <Box style = {{padding:'1%'}}>
                   {!selectedchats.isGroupChat ? (
                     <div style = {{display:'grid',gridTemplateColumns:'1fr 100px',padding:'2%'}}> 
                         {/*  For Selecting single user and show name only  */}
-                        <span>   {selectedchats.users[1].name }  </span>   
+                        <span style = {{fontSize:'21px',fontWeight:'400'}}>   {selectedchats.users[1].name.toUpperCase()}  </span>   
                             {/*  Get Full Details of user at current time (( By clicking on the modal eye  )) */}
-                        <span>     <ProfileModals user = {getSenderFull(user,selectedchats.users)} /> </span>
+                        <span>      <ProfileModals user = {getSenderFull(user,selectedchats.users)} /> </span>
 
                     </div>
                   ) : ( // For Group chat  get the name 
@@ -157,15 +157,17 @@ const Singlechat = ({fetchagain , setfetchagain}) =>
             </Box>
 
               <Box width="100" height="100%">
-                     {/* Messages here in Box  */}
                      {loading ? (
                       <>
-                            <Spinner 
-                            size="xl" 
-                            w = "20" 
-                            h = "20" 
-                            alignSelf ="center" 
-                            margin = "auto" />
+                        <Box style = {{height:'60vh',display:'flex',backgroundColor:'white'}}>
+                              <Spinner 
+                              size="xl" 
+                              w = "20" 
+                              h = "20" 
+                              alignSelf ="center" 
+                              textAlign='center'
+                              margin = "auto" />
+                        </Box>
                       </>) : 
                      (<>
                           <div className="messages">            
@@ -181,7 +183,7 @@ const Singlechat = ({fetchagain , setfetchagain}) =>
 
        </>) : 
        (
-            <Box style = {{height:'80vh',backgroundColor:'white',alignItems:'center',
+            <Box style = {{height:'90vh',backgroundColor:'white',alignItems:'center',
             justifyContent:'center',display:'flex',padding:'1%'}}>
                 <Text fontSize="3xl">  Click on a user to start chatting  </Text>
             </Box>

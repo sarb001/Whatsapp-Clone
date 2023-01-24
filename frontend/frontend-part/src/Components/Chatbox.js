@@ -8,7 +8,7 @@ const Chatbox = ({setfetchagain, fetchagain}) => {
     <div> 
       <Box alignItems="center"
       height = "80vh"
-       bg="lightblue">
+       bg="wheat">
          <Singlechat setfetchagain = {setfetchagain}  fetchagain = {fetchagain} />
       </Box>
     </div>

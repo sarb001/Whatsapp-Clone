@@ -110,9 +110,7 @@ const accesschat = async (userid) => {
       position: "bottom-left",
     });
   }
-
 }  
-
 const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
@@ -127,7 +125,7 @@ const { isOpen, onOpen, onClose } = useDisclosure();
                 </span>
 
                 <span style = {{textAlign:'center'}}>
-                  <Text fontSize='2xl'>  Chatties  </Text>
+                  <Text fontSize='2xl'>  Chatties Red   </Text>
                 </span>
                 {/* <span>  <AiFillBell  size = "30px" /> </span> */}
 
@@ -138,10 +136,11 @@ const { isOpen, onOpen, onClose } = useDisclosure();
                                 <Avatar  
                                 cursor="pointer" 
                                 name = {user.name} 
-                                src = {user?.pic} />
+                                src = {user.pic} />
                               </MenuButton>
                               <MenuList>
-                                {console.log('chat state' , user)}
+                                {console.log ('chat state' , user)}
+                                {console.log ('chat image' , user.pic)}
                                 <ProfileModals  user = {user}>
                                     <MenuItem>   My Profile  </MenuItem> {"  "} 
                                 </ProfileModals>
