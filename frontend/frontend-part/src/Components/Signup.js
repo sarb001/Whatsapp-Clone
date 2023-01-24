@@ -53,7 +53,7 @@ const Signup = () => {
             }
 
             const  { data }  = await axios.post('/api/user' ,
-            {name ,email ,password  }, config );
+            { name ,email ,password  }, config );
 
             toast({
               title: ' User is Registered Succesfully ',

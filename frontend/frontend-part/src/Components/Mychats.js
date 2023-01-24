@@ -74,7 +74,8 @@ const [loadingchat ,setLoadingchat] = useState(false);
                           <Text>
 
                                 {/* if not grp chat then show name as sender
-                                if grp chat then grp chst name is shown    */}
+                                
+                                if grp chat then grp chat name is shown    */}
                               {!chat.isGroupChat ? getSender(loggeduser,chat.users) : chat.chatName}
                           </Text>
                         </Box> ))

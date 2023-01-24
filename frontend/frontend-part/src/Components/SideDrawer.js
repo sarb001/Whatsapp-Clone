@@ -119,7 +119,6 @@ const { isOpen, onOpen, onClose } = useDisclosure();
     <>
               <Box>
             <div style = {{display:'grid',gridTemplateColumns:'1fr 1fr 1fr',padding:'8px',}}>
-
                 <span>
                     <Button variant="ghost" onClick = {onOpen} >
                             <Text px  = "4"> Search User </Text>
@@ -137,12 +136,12 @@ const { isOpen, onOpen, onClose } = useDisclosure();
                           <Menu>
                               <MenuButton  as = {Button} rightIcon = {<AiOutlineArrowDown />}   >
                                 <Avatar  
-                                size = "sm" 
                                 cursor="pointer" 
                                 name = {user.name} 
-                                src = {user.pic} />
+                                src = {user?.pic} />
                               </MenuButton>
                               <MenuList>
+                                {console.log('chat state' , user)}
                                 <ProfileModals  user = {user}>
                                     <MenuItem>   My Profile  </MenuItem> {"  "} 
                                 </ProfileModals>
@@ -175,10 +174,7 @@ const { isOpen, onOpen, onClose } = useDisclosure();
 
                  { loading ? 
                  (<> 
-                 <Box>
-                  <ChatLoading />
-                 </Box>
-
+                 <Box> <ChatLoading />  </Box>
                  </>) :
                  (
                    searchResult?.map((user) => (
