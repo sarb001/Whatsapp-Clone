@@ -1,4 +1,3 @@
-
 const User = require('../Schemas/UserSchema');
 const bcrypt = require('bcryptjs');
 const jsoncreatetoken = require('./JsoncreateToken');
@@ -52,8 +51,8 @@ const jsoncreatetoken = require('./JsoncreateToken');
 }
 
 // Loggingin User 
-const loginUser = async(req,res) => {
-
+const loginUser = async(req,res) => 
+{
     const {email ,password} = req.body;
     if(!email || !password)
     {

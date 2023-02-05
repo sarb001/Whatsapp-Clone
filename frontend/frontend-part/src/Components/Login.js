@@ -22,7 +22,8 @@ const Login = () => {
 
   const handlelogin = async () => {
 
-    if (!email || !password) {        //  when few fields are not Present 
+    if (!email || !password) 
+    {                                      //  when few fields are not Present 
       toast({
         title: "Please Fill all the Feilds",
         status: "warning",
