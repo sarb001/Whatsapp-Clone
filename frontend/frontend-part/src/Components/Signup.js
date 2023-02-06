@@ -48,6 +48,7 @@ const Signup = () => {
           }
 
           try{
+            
             const config = {
               headers : { 'Content-type' : 'application/json'},
             }
